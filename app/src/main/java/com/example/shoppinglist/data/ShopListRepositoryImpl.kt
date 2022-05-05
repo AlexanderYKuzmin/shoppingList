@@ -25,7 +25,7 @@ object ShopListRepositoryImpl : ShopListRepository {
         }
     }
 
-    override fun getShopList(): LiveData<MutableList<ShopItem>> {
+    override fun getShopList(): MutableLiveData<MutableList<ShopItem>> {
         updateList()
         return shopListLD
     }
