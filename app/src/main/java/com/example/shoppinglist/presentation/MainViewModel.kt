@@ -13,6 +13,8 @@ class MainViewModel: ViewModel() {
     private val editShopItemUseCase = EditShopItemUseCase(repository)
     private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
 
+    private val addShopItemUseCase = AddShopItemUseCase(repository)
+
     val shopList = getShopListUseCase.getShopList()
 
     /*fun getShopList() {
@@ -21,6 +23,10 @@ class MainViewModel: ViewModel() {
 
     fun deleteShopItem(shopItem: ShopItem) {
         deleteShopItemUseCase.deleteShopItem(shopItem)
+    }
+
+    fun addShopItem(shopItem: ShopItem) {
+        addShopItemUseCase.addShopItem(shopItem)
     }
 
     fun changeEnableState(shopItem: ShopItem) {
