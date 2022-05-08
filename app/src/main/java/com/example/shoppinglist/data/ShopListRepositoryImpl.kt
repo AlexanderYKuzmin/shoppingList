@@ -9,7 +9,7 @@ import kotlin.random.Random
 
 object ShopListRepositoryImpl : ShopListRepository {
 
-    private val shopListLD = MutableLiveData<MutableList<ShopItem>>()
+    private val shopListLD = MutableLiveData<List<ShopItem>>()
     //private val shopList = mutableListOf<ShopItem>()
     /*private val shopList = sortedSetOf<ShopItem>(object : Comparator<ShopItem>{
         override fun compare(o1: ShopItem, o2: ShopItem): Int {
@@ -25,7 +25,7 @@ object ShopListRepositoryImpl : ShopListRepository {
         }
     }
 
-    override fun getShopList(): MutableLiveData<MutableList<ShopItem>> {
+    override fun getShopList(): MutableLiveData<List<ShopItem>> {
         updateList()
         return shopListLD
     }

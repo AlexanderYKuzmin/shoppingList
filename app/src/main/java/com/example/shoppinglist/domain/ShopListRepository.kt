@@ -1,10 +1,9 @@
 package com.example.shoppinglist.domain
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 interface ShopListRepository {
-    fun getShopList(): MutableLiveData<MutableList<ShopItem>>
+    fun getShopList(): MutableLiveData<List<ShopItem>>
 
     fun getShopItem(shopItemId: Int): ShopItem
 

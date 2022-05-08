@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 
 class GetShopListUseCase(private val shopListRepository: ShopListRepository) {
     
-    fun getShopList(): MutableLiveData<MutableList<ShopItem>> {
+    fun getShopList(): MutableLiveData<List<ShopItem>> {
         return shopListRepository.getShopList()
     }
 }
