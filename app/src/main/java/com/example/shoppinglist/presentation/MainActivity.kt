@@ -1,5 +1,6 @@
 package com.example.shoppinglist.presentation
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,8 +43,10 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
         button.setOnClickListener {
-            it.setBackgroundColor(Color.RED)
-            Log.d(LOG_TAG, "Button pressed")
+            /*it.setBackgroundColor(Color.RED)
+            Log.d(LOG_TAG, "Button pressed")*/
+            val intent = ShopItemActivity.newIntentAddItem(this)
+            startActivity(intent)
         }
     }
 
@@ -84,7 +87,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpClickListener() {
         shopListAdapter.onShopItemClickListener = {
-            Log.d(LOG_TAG, "On click from MainActivity = ${it.name}")
+            val intent = ShopItemActivity.newIntentEditItem(this, it.id)
+            startActivity(intent)
         }
     }
 
