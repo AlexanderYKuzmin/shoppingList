@@ -1,9 +1,12 @@
 package com.example.shoppinglist.presentation
 
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.shoppinglist.data.ShopListRepositoryImpl
-import com.example.shoppinglist.domain.*
+import com.example.shoppinglist.domain.DeleteShopItemUseCase
+import com.example.shoppinglist.domain.EditShopItemUseCase
+import com.example.shoppinglist.domain.GetShopListUseCase
+import com.example.shoppinglist.domain.ShopItem
 
 class MainViewModel: ViewModel() {
 
@@ -24,7 +27,10 @@ class MainViewModel: ViewModel() {
     }
 
     fun changeEnableState(shopItem: ShopItem) {
+        Log.d("MainViewModel", "Enable state change")
         val newItem = shopItem.copy(enabled = !shopItem.enabled)
+
+        Log.d("MainViewModel", "new item enable = ${newItem.enabled}")
         editShopItemUseCase.editShopItem(newItem)
     }
 }

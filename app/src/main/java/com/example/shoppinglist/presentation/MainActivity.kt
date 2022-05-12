@@ -43,8 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
         button.setOnClickListener {
-            /*it.setBackgroundColor(Color.RED)
-            Log.d(LOG_TAG, "Button pressed")*/
+
             val intent = ShopItemActivity.newIntentAddItem(this)
             startActivity(intent)
         }
@@ -88,6 +87,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUpClickListener() {
         shopListAdapter.onShopItemClickListener = {
             val intent = ShopItemActivity.newIntentEditItem(this, it.id)
+            Log.d("MainActivity", "new intent put extra id = ${it.id}")
             startActivity(intent)
         }
     }

@@ -1,5 +1,6 @@
 package com.example.shoppinglist.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.shoppinglist.domain.ShopItem
@@ -21,7 +22,7 @@ object ShopListRepositoryImpl : ShopListRepository {
 
     init {
         for (i in 0..30) {
-            addShopItem(ShopItem("Item_$i", 1, true))
+            addShopItem(ShopItem("Item_$i", 1, Random.nextBoolean()))
         }
     }
 
@@ -50,6 +51,7 @@ object ShopListRepositoryImpl : ShopListRepository {
     }
 
     override fun editShopItem(shopItem: ShopItem) {
+        Log.d("Repository", "shop item enabled = ${shopItem.enabled}, shopItemId = ${shopItem.id}")
         shopList.remove(getShopItem(shopItem.id))
         addShopItem(shopItem)
     }

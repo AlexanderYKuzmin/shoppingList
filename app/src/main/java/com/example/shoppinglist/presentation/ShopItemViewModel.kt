@@ -1,5 +1,6 @@
 package com.example.shoppinglist.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,23 +46,25 @@ class ShopItemViewModel: ViewModel() {
     }
 
     fun editShopItem(inputName: String?, inputCount: String?) {
+        Log.d("ShopItemViewModel", "Edit shop Item")
         val name = parseName(inputName)
         val count = parseCount(inputCount)
         if (validateInput(name, count)) {
+            Log.d("ShopItemViewModel", "Edit shop Item Valid")
             _shopItem.value?.let {
                 val item = it.copy(name = name, count = count)
-                editShopItemUseCase.editShopItem(ShopItem(name, count, true))
+                editShopItemUseCase.editShopItem(item)
                 _processIsFinished.value = Unit
             }
 
         }
     }
 
-    fun parseName(inputName: String?): String {
+    private fun parseName(inputName: String?): String {
         return inputName?.trim() ?: ""
     }
 
-    fun parseCount(inputCount: String?): Int {
+    private fun parseCount(inputCount: String?): Int {
         return try {
             inputCount?.trim()?.toInt() ?: 0
         } catch (e: Exception) {
@@ -71,6 +74,10 @@ class ShopItemViewModel: ViewModel() {
 
     fun resetErrorInputName() {
         _errorInputName.value = false
+    }
+
+    fun resetErrorInputCount() {
+        _errorInputCount.value = false
     }
 
     /*fun resetIsProcessFinished() {

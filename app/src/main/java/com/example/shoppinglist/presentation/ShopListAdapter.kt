@@ -45,7 +45,7 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
         }
 
         holder.itemView.setOnClickListener {
-            Log.d("Adapter", "OnClickListener from holder")
+            Log.d("Adapter", "OnClickListener from holder. ShopItem id = ${shopItem.id}")
             onShopItemClickListener?.invoke(shopItem)
         }
     }
